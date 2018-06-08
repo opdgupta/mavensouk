@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -16,10 +17,12 @@ public class FacebookLogin {
         // not the implementation.
 		//System.setProperty("webdriver.ie.driver", "C:/Program Files/Internet Explorer/iexplore.exe");
 		//System.setProperty("webdriver.chrome.driver", "C:/Users/mb70fy/Backup/Personal/mavensouk/chrome.exe");
-		System.setProperty("webdriver.ie.driver", "C:/Program Files (x86)/Mozilla Firefox/firefox.exe");
-		 
+		//System.setProperty("webdriver.ie.driver", "C:/Program Files (x86)/Mozilla Firefox/firefox.exe");
+		String exePath = "C:\\Users\\Deepti G\\Downloads\\chromedriver_win32\\chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", exePath);
+WebDriver driver=new ChromeDriver();
 		
-		WebDriver driver =  new FirefoxDriver();
+		//WebDriver driver =  new FirefoxDriver();
 
         // And now use this to visit Google
         driver.get("http://www.mavensouk.co.in/");
@@ -90,20 +93,23 @@ public class FacebookLogin {
         element.click();
         element = driver.findElement(By.linkText("Aerial"));
         element.click();
-        Select select = new Select(driver.findElement(By.name("location")));
+      //  element.submit();
+        element= driver.findElement(By.name("location"))		;
+        element.sendKeys("Abohar");
+       // Select select = new Select(driver.findElement(By.name("location")));
         //select.deselectAll();
-        select.selectByVisibleText("Abohar");
+      //  select.selectByVisibleText("Abohar");
         element=driver.findElement(By.name("bugdet_from"));
         element.sendKeys("1000");
         element=driver.findElement(By.name("bugdet_to"));
         element.sendKeys("10000");	
         element=driver.findElement(By.name("event_start"));
         element.clear();
-        element.sendKeys("03/01/2018 10:45 PM");
+        element.sendKeys("09/01/2018 10:45 PM");
         
         element=driver.findElement(By.name("event_end"));
         element.clear();
-        element.sendKeys("03/02/2018 10:45 PM");
+        element.sendKeys("10/02/2018 10:45 PM");
         
         element=driver.findElement(By.name("product_name"));
         element.sendKeys("ZARAAA");
@@ -149,11 +155,14 @@ public class FacebookLogin {
         
         Select selectAccommodationCost = new Select(driver.findElement(By.name("accommodation_cost")));
         selectAccommodationCost.selectByVisibleText("Include cost in the package");
-        
-        List<WebElement> elements5= driver.findElements(By.className("icheckbox_flat"));
+      
+       List<WebElement> elements5= driver.findElements(By.className("icheckbox_flat"));
         element = elements5.get(1);
-        System.out.println(element.getTagName());
-       // element.click();
+       System.out.println(element.getTagName());
+        element.click();
+        element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+       
+        element.click();
        
         
 //        Select select = new Select(driver.findElement(By.name("phptography")));
