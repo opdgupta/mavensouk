@@ -1,5 +1,9 @@
 package com.mavensouk.login;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -105,11 +109,39 @@ WebDriver driver=new ChromeDriver();
         element.sendKeys("10000");	
         element=driver.findElement(By.name("event_start"));
         element.clear();
-        element.sendKeys("09/01/2018 10:45 PM");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
         
+        //get current date time with Date()
+     //   Date date = new Date();
+        
+        // Now format the date
+       // String date1= dateFormat.format(date);
+        
+        // Print the Date
+     //   System.out.println(date1);
+        
+     //   element.sendKeys(date1);
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_YEAR, 2);
+         
+        String tomorrow= dateFormat.format(calendar.getTime()); 
+        System.out.println(today);
+        System.out.println(tomorrow);
+        element.sendKeys(tomorrow);
         element=driver.findElement(By.name("event_end"));
         element.clear();
-        element.sendKeys("10/02/2018 10:45 PM");
+        
+       // Calendar calendar1 = Calendar.getInstance();
+        Date today1 = calendar.getTime();
+
+        calendar.add(Calendar.DAY_OF_YEAR, 5);
+         
+        String tomorrow1= dateFormat.format(calendar.getTime()); 
+        System.out.println(today1);
+        System.out.println(tomorrow1);
+        element.sendKeys(tomorrow1);
         
         element=driver.findElement(By.name("product_name"));
         element.sendKeys("ZARAAA");
