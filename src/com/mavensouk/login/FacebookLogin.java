@@ -37,29 +37,14 @@ WebDriver driver=new ChromeDriver();
         WebElement element = driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/div/div/div[3]/ul/li[2]/a/span[1]"));
         element.click();
         fillInLoginDetails(driver);
-        createAnEvent(driver);
-        // Enter something to search for
-       // element.sendKeys("Cheese!");
-
-        // Now submit the form. WebDriver will find the form for us from the element
-        //element.submit();
-
-        // Check the title of the page
-        System.out.println("Page title is: " + driver.getTitle());
-        
-        // Google's search is rendered dynamically with JavaScript.
-        // Wait for the page to load, timeout after 10 seconds
-       /* (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("cheese!");
-            }
-        });*/
-
-        // Should see: "cheese! - Google Search"
-        System.out.println("Page title is: " + driver.getTitle());
-        
-        //Close the browser
-        //driver.quit();
+      //  eventCommercial(driver);
+       // eventWedding(driver);
+       //eventBabiesandKids(driver);
+       // eventFashionAndPortfolio(driver);
+       // eventCorporateEvent(driver);
+      //  eventSports(driver);
+     //   eventFood(driver);
+        eventSchoolCollege(driver);
     }
 	
 	private static void fillInLoginDetails(WebDriver driver){
@@ -79,9 +64,65 @@ WebDriver driver=new ChromeDriver();
 		
 		
 	}
-	private static void createAnEvent(WebDriver driver){
+	private static void createEvent1(WebDriver driver){
+		
+		WebElement element= driver.findElement(By.name("location"))		;
+        element.sendKeys("Mumbai");
+       
+        element=driver.findElement(By.name("bugdet_from"));
+        element.sendKeys("1000");
+        
+        element=driver.findElement(By.name("bugdet_to"));
+        element.sendKeys("10000");	
+        
+        Select selectTravelCost = new Select(driver.findElement(By.name("travel_cost")));
+        selectTravelCost.selectByVisibleText("Include cost in the package");
+        
+        Select selectAccommodationCost = new Select(driver.findElement(By.name("accommodation_cost")));
+        selectAccommodationCost.selectByVisibleText("Include cost in the package");
+      
+        List<WebElement> elements5= driver.findElements(By.className("icheckbox_flat"));
+        element = elements5.get(1);
+        element.click();
+	}
+	
+	private static void createEvent2(WebDriver driver){
+		
+		WebElement element=driver.findElement(By.name("event_start"));
+        element.clear();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy ");
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_YEAR, 2);  
+        String tomorrow= dateFormat.format(calendar.getTime()); 
+        System.out.println(today);
+        System.out.println(tomorrow);
+        element.sendKeys(tomorrow);
+        
+        element=driver.findElement(By.name("event_end"));
+        element.clear();
+        Date today1 = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_YEAR, 5);
+        String tomorrow1= dateFormat.format(calendar.getTime()); 
+        System.out.println(today1);
+        System.out.println(tomorrow1);
+        element.sendKeys(tomorrow1);
+        
+	}
+	
+	private static void createEvent3(WebDriver driver){
+		
+	 Select selectPhotography = new Select(driver.findElement(By.name("photography")));
+     selectPhotography.selectByVisibleText("Yes");
+     
+     Select selectVideography = new Select(driver.findElement(By.name("videography")));
+     selectVideography.selectByVisibleText("Yes");
+	}
+	
+	private static void eventCommercial(WebDriver driver){
 		
 		
+		driver.navigate().refresh();
         WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
         element.click();
         List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
@@ -98,7 +139,7 @@ WebDriver driver=new ChromeDriver();
         element = driver.findElement(By.linkText("Aerial"));
         element.click();
       //  element.submit();
-        element= driver.findElement(By.name("location"))		;
+        element= driver.findElement(By.name("location"));
         element.sendKeys("Abohar");
        // Select select = new Select(driver.findElement(By.name("location")));
         //select.deselectAll();
@@ -202,5 +243,295 @@ WebDriver driver=new ChromeDriver();
 //        select.selectByVisibleText();
 
 		
+	}
+	private static void eventWedding(WebDriver driver){
+		
+		driver.navigate().refresh();
+		
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+        element.click();
+        
+        List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+        element = elements.get(0);
+        element.click();		
+        element = driver.findElement(By.linkText("Wedding"));
+        element.click();
+        
+        List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+        element = elements1.get(1);
+        element.click();
+        element = driver.findElement(By.linkText("Bachelor Party"));
+        element.click();
+     
+        createEvent1(driver);
+        createEvent2(driver);
+   
+        List<WebElement> elements3= driver.findElements(By.id("dropdownMenu1"));
+        element = elements3.get(3);
+        element.click();
+        element = driver.findElement(By.linkText("Traditional"));
+        element.click();
+        
+        List<WebElement> elements4= driver.findElements(By.id("dropdownMenu1"));
+        element = elements4.get(4);
+        element.click();
+        element = driver.findElement(By.linkText("Traditional"));
+        element.click();
+               
+        element=driver.findElement(By.name("gathering"));
+        element.sendKeys("100");
+            
+        List<WebElement> elements2= driver.findElements(By.id("dropdownMenu1"));
+        element = elements2.get(2);
+        element.click();
+        element = driver.findElement(By.linkText("Groom"));
+        element.click(); 
+        
+        element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+        element.click();
+      	
+	}
+	private static void eventBabiesandKids(WebDriver driver){
+		
+		driver.navigate().refresh();
+		
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+        element.click();
+        
+        List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+        element = elements.get(0);
+        element.click();		
+        element = driver.findElement(By.linkText("Babies & Kids"));
+        element.click();
+        
+        List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+        element = elements1.get(1);
+        element.click();
+        element = driver.findElement(By.linkText("Baby Shower"));
+        element.click();
+        element = driver.findElement(By.linkText("Birthday"));
+        element.click();
+     
+        createEvent1(driver);
+        
+        createEvent2(driver);
+        
+        Select selectBabyAge = new Select(driver.findElement(By.name("baby_age")));
+        selectBabyAge.selectByVisibleText("Pregnancy");
+        
+        createEvent3(driver);
+                       
+        element=driver.findElement(By.name("gathering"));
+        element.sendKeys("100");
+            
+        element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+        element.click();
+      	}
+	
+	private static void eventFashionAndPortfolio(WebDriver driver) {
+		
+		driver.navigate().refresh();
+		
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+        element.click();
+        
+        List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+        element = elements.get(0);
+        element.click();		
+        element = driver.findElement(By.linkText("Fashion & Portfolio"));
+        element.click();
+        
+        List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+        element = elements1.get(1);
+        element.click();
+        element = driver.findElement(By.linkText("Celebrity & Glamour"));
+        element.click();
+       
+        createEvent1(driver);
+        
+        createEvent2(driver);
+        
+        element= driver.findElement(By.name("no_of_pics"))		;
+        element.sendKeys("100");
+        
+        createEvent3(driver);
+        
+        List<WebElement> elements2= driver.findElements(By.id("dropdownMenu1"));
+        element = elements2.get(2);
+        element.click();
+        element = driver.findElement(By.linkText("Indoor"));
+        element.click();
+        
+        element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+        element.click();
+	}
+	
+	private static void eventCorporateEvent(WebDriver driver) {
+		
+		driver.navigate().refresh();
+		
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+        element.click();
+        
+        List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+        element = elements.get(0);
+        element.click();		
+        element = driver.findElement(By.linkText("Corporate Events"));
+        element.click();
+        
+        List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+        element = elements1.get(1);
+        element.click();
+        element = driver.findElement(By.linkText("Annual Day"));
+        element.click();
+       
+        createEvent1(driver);
+        
+        createEvent2(driver);
+        
+        element= driver.findElement(By.name("no_of_photographers"))		;
+        element.sendKeys("2");
+        
+        element= driver.findElement(By.name("no_of_videographers"))		;
+        element.sendKeys("2");
+        
+        createEvent3(driver);
+        
+        element=driver.findElement(By.name("gathering"));
+        element.sendKeys("200");
+        
+        List<WebElement> elements2= driver.findElements(By.id("dropdownMenu1"));
+        element = elements2.get(2);
+        element.click();
+        element = driver.findElement(By.linkText("Indoor"));
+        element.click();
+        
+        element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+        element.click();
+	}
+	
+	private static void eventSports(WebDriver driver) {
+	
+		driver.navigate().refresh();
+	
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+		element.click();
+    
+		List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+		element = elements.get(0);
+		element.click();		
+		element = driver.findElement(By.linkText("Sports"));
+		element.click();
+    
+		List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+		element = elements1.get(1);
+		element.click();
+		element = driver.findElement(By.linkText("Aerobics"));
+		element.click();
+   
+	    createEvent1(driver);
+	    
+	    createEvent2(driver);
+	    
+	    element= driver.findElement(By.name("no_of_photographers"))		;
+	    element.sendKeys("1");
+	    
+	    element= driver.findElement(By.name("no_of_videographers"))		;
+	    element.sendKeys("1");
+	    
+	    createEvent3(driver);
+	    
+	    element=driver.findElement(By.name("gathering"));
+	    element.sendKeys("50");
+	    
+	    element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+	    element.click();
+	}
+	private static void eventFood(WebDriver driver) {
+		
+		driver.navigate().refresh();
+	
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+		element.click();
+    
+		List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+		element = elements.get(0);
+		element.click();		
+		element = driver.findElement(By.linkText("Food"));
+		element.click();
+    
+		List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+		element = elements1.get(1);
+		element.click();
+		element = driver.findElement(By.linkText("Drinks"));
+		element.click();
+   
+	    createEvent1(driver);
+	    
+	    createEvent2(driver);
+	    
+	    createEvent3(driver);
+	    
+	    element=driver.findElement(By.name("product_desc"));
+	    element.sendKeys("Cocktail");
+	    
+	    element=driver.findElement(By.name("no_of_product"));
+	    element.sendKeys("10");
+	    
+	    List<WebElement> elements2= driver.findElements(By.id("dropdownMenu1"));
+		element = elements2.get(2);
+		element.click();
+		element = driver.findElement(By.linkText("3"));
+		element.click();
+		
+		element=driver.findElement(By.name("background_color"));
+	    element.sendKeys("Blue");
+	    
+	    List<WebElement> elements3= driver.findElements(By.id("dropdownMenu1"));
+		element = elements3.get(3);
+		element.click();
+		element = driver.findElement(By.linkText("Online"));
+		element.click();
+	    
+	    element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+	    element.click();
+	}
+	
+private static void eventSchoolCollege(WebDriver driver) {
+		
+		driver.navigate().refresh();
+	
+		WebElement element = driver.findElement(By.xpath("/html/body/main/aside/ul/li[5]/a/span"));
+		element.click();
+    
+		List<WebElement> elements= driver.findElements(By.id("dropdownMenu1"));
+		element = elements.get(0);
+		element.click();		
+		element = driver.findElement(By.linkText("School/College"));
+		element.click();
+    
+		List<WebElement> elements1= driver.findElements(By.id("dropdownMenu1"));
+		element = elements1.get(1);
+		element.click();
+		element = driver.findElement(By.linkText("Convocation"));
+		element.click();
+   
+	    createEvent1(driver);
+	    
+	    createEvent2(driver);
+	    
+	    createEvent3(driver);
+	    
+	    element= driver.findElement(By.name("no_of_photographers"))		;
+	    element.sendKeys("1");
+	    
+	    element= driver.findElement(By.name("no_of_videographers"))		;
+	    element.sendKeys("1");
+	    
+	    element=driver.findElement(By.name("gathering"));
+	    element.sendKeys("50");
+	    
+	    element= driver.findElement(By.xpath("//*[@id=\"post_job_form\"]/button"));
+	    element.click();
 	}
 }
